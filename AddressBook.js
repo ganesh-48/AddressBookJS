@@ -4,7 +4,8 @@
 * contact first name, last name, address, city, state, zip, phone number and email.
 * Check a ensure valid contacts are added . 
 * Create a new address book array.
- * Add new contacts details in address book.*/
+* Add new contacts details in address book.
+* find the contacs in address book by using person first name. */
 console.log(" Welcome to Address Book Problem ");
 
 class Contacts {
@@ -149,6 +150,7 @@ class Contacts {
 
 /**Create a new address book array.
  * Add new contacts details in address book. 
+ * find the contacs in address book by using person first name.
  */
 try {
     let addContactsArray = new Array();
@@ -158,6 +160,8 @@ try {
         "91 4561237866", "sai@gmail.com"));
     
     
+        addContactsArray.forEach((contact) => console.log(contact.toString()));
+        addContactsArray.filter(contact => contact.firstName == 'Ram').map(contact => contact.firstName = "Shakhar");
         addContactsArray.forEach((contact) => console.log(contact.toString()));
 }
 catch (e) {
