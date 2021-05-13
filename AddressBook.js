@@ -5,7 +5,9 @@
 * Check a ensure valid contacts are added . 
 * Create a new address book array.
 * Add new contacts details in address book.
-* find the contacs in address book by using person first name. */
+* find the contacs in address book by using person first name.
+* Delete a contact using person first name in address book.
+*/
 console.log(" Welcome to Address Book Problem ");
 
 class Contacts {
@@ -151,6 +153,7 @@ class Contacts {
 /**Create a new address book array.
  * Add new contacts details in address book. 
  * find the contacs in address book by using person first name.
+ * Delete a contact using person first name in address book.
  */
 try {
     let addContactsArray = new Array();
@@ -161,8 +164,13 @@ try {
     
     
         addContactsArray.forEach((contact) => console.log(contact.toString()));
-        addContactsArray.filter(contact => contact.firstName == 'Ram').map(contact => contact.firstName = "Shakhar");
+        addContactsArray.filter(contact => contact.firstName == "Ram").map(contact => contact.firstName = "Shakhar");
         addContactsArray.forEach((contact) => console.log(contact.toString()));
+
+        let index = addContactsArray.findIndex(contact => contact.firstName = "Sai");
+        addContactsArray.slice(index, 1);
+        addContactsArray.forEach((contact) => console.log(contact.toString()));
+
 }
 catch (e) {
     console.log('Regex pattern is not valid' + e);
