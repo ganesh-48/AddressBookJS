@@ -8,6 +8,7 @@
 * find the contacs in address book by using person first name.
 * Delete a contact using person first name in address book.
 * Count the total number of contact in address book.
+* Search the duplicate contacts.
 */
 console.log(" Welcome to Address Book Problem ");
 
@@ -156,6 +157,7 @@ class Contacts {
  * find the contacs in address book by using person first name.
  * Delete a contact using person first name in address book.
  * Count the total number of contact in address book.
+ * Search the duplicate contacts.
  */
 try {
     let addContactsArray = new Array();
@@ -180,6 +182,24 @@ try {
         }
         addContactsArray.reduce(numberOfContacts, 0);
         console.log("Total number of contacts in address book is: " + count);
+        function duplicatesContacts(count, contact) {
+            if (contact != null)
+                count++;
+            return count;
+        }
+    
+        function addContacts() {
+            if (duplicateContacts == 0) addContactsArray.push(newContacts);
+            else console.log("No duplicate entry found");
+        }
+    
+        let duplicateContacts = addContactsArray.filter(contacts => contacts.firstName == newContacts.firstName)
+        .map(contacts => contacts).reduce(duplicatesContacts, 0);
+    
+        addContacts();
+    
+        console.log("Adding a new contact in address book");
+        addContactsArray.forEach((contacts) => console.log(contacts.toString()));
     }
 catch (e) {
     console.log("Regex pattern is not valid" + e);
