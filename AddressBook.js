@@ -2,7 +2,9 @@
 * Welcome to address book problem.
 * Create a contact in address book.
 * contact first name, last name, address, city, state, zip, phone number and email.
-* Check a ensure valid contacts are added . */
+* Check a ensure valid contacts are added . 
+* Create a new address book array.
+ * Add new contacts details in address book.*/
 console.log(" Welcome to Address Book Problem ");
 
 class Contacts {
@@ -143,4 +145,21 @@ class Contacts {
     toString() {
         return "First Name: " + this.firstName + ", Last Name: " + this.lastName+ "Address: " + this.address+ ", City: " + this.city + ", State: "+ this.state + "Zip: " + this.zip+ ", Phone Number: " + this.phoneNumber + ", Email: " + this.email;
     }
+}
+
+/**Create a new address book array.
+ * Add new contacts details in address book. 
+ */
+try {
+    let addContactsArray = new Array();
+        addContactsArray.push(new Contact("Ram", "Sharma", "Line-3", "Solapur", "Maharashtra", "330001",
+        "91 1234567899", "ramsharma@gmail.com"));
+        addContactsArray.push(new Contact("Sai", "Thakur", "sailpalace", "pune", "Maharashtra", "323021",
+        "91 4561237866", "sai@gmail.com"));
+    
+    
+        addContactsArray.forEach((contact) => console.log(contact.toString()));
+}
+catch (e) {
+    console.log('Regex pattern is not valid' + e);
 }
