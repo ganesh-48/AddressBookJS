@@ -7,6 +7,7 @@
 * Add new contacts details in address book.
 * find the contacs in address book by using person first name.
 * Delete a contact using person first name in address book.
+* Count the total number of contact in address book.
 */
 console.log(" Welcome to Address Book Problem ");
 
@@ -154,6 +155,7 @@ class Contacts {
  * Add new contacts details in address book. 
  * find the contacs in address book by using person first name.
  * Delete a contact using person first name in address book.
+ * Count the total number of contact in address book.
  */
 try {
     let addContactsArray = new Array();
@@ -163,15 +165,22 @@ try {
         "91 4561237866", "sai@gmail.com"));
     
     
-        addContactsArray.forEach((contact) => console.log(contact.toString()));
-        addContactsArray.filter(contact => contact.firstName == "Ram").map(contact => contact.firstName = "Shakhar");
-        addContactsArray.forEach((contact) => console.log(contact.toString()));
+        addContactsArray.forEach((contacts) => console.log(contacts.toString()));
+        addContactsArray.filter(contacts => contacts.firstName == "Ram").map(contacts => contacts.firstName = "Shakhar");
+        addContactsArray.forEach((contacts) => console.log(contacts.toString()));
 
-        let index = addContactsArray.findIndex(contact => contact.firstName = "Sai");
+        let index = addContactsArray.findIndex(contacts => contacts.firstName = "Sai");
         addContactsArray.slice(index, 1);
-        addContactsArray.forEach((contact) => console.log(contact.toString()));
+        addContactsArray.forEach((contacts) => console.log(contacts.toString()));
 
-}
+        let count = 0;
+        function numberOfContacts(contacts) {
+            if (contacts != null)
+                return count++;
+        }
+        addContactsArray.reduce(numberOfContacts, 0);
+        console.log("Total number of contacts in address book is: " + count);
+    }
 catch (e) {
-    console.log('Regex pattern is not valid' + e);
+    console.log("Regex pattern is not valid" + e);
 }
