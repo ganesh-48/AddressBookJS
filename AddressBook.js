@@ -9,6 +9,8 @@
 * Delete a contact using person first name in address book.
 * Count the total number of contact in address book.
 * Search the duplicate contacts.
+* Search person by city and state.
+* used filter to find person name in city or state.
 */
 console.log(" Welcome to Address Book Problem ");
 
@@ -158,6 +160,8 @@ class Contacts {
  * Delete a contact using person first name in address book.
  * Count the total number of contact in address book.
  * Search the duplicate contacts.
+ * Search person by city and state.
+ * used filter to find person name in city or state.
  */
 try {
     let addContactsArray = new Array();
@@ -175,31 +179,27 @@ try {
         addContactsArray.slice(index, 1);
         addContactsArray.forEach((contacts) => console.log(contacts.toString()));
 
-        let count = 0;
-        function numberOfContacts(contacts) {
-            if (contacts != null)
-                return count++;
+        //search person by city
+        function searchPersonByCity() {
+            if (searchPersonByCity == 0) 
+            console.log("Person name is not found in city:" + searchPersonByCity);
+            else 
+            console.log( searchPersonByCity + "Person name is found in a particular city" + searchPersonByCity);
         }
-        addContactsArray.reduce(numberOfContacts, 0);
-        console.log("Total number of contacts in address book is: " + count);
-        function duplicatesContacts(count, contact) {
-            if (contact != null)
-                count++;
-            return count;
+        let searchPerzonByCity = "Solapur";
+        let searchPersonByCity = addContactsArray.filter(contacts => contacts.city == searchPersonByCity).map(contacts => contacts);
+        searchPersonByCity();
+
+        //search person by state
+        function searchPersonByState() {
+            if (serchPersonByState == 0) 
+            console.log("Person name is not found in address book " + searchPersonByState);
+            else console.log( serchPersonByState + "Person name is found in address book" + searchPersonByState);
         }
+        let searchPersonByState = "Maharashtra";
+        let serchPersonByState = addContactsArray.filter(contacts => contacts.state == searchPersonByState).map(contacts => contacts);
+        searchPersonByState();
     
-        function addContacts() {
-            if (duplicateContacts == 0) addContactsArray.push(newContacts);
-            else console.log("No duplicate entry found");
-        }
-    
-        let duplicateContacts = addContactsArray.filter(contacts => contacts.firstName == newContacts.firstName)
-        .map(contacts => contacts).reduce(duplicatesContacts, 0);
-    
-        addContacts();
-    
-        console.log("Adding a new contact in address book");
-        addContactsArray.forEach((contacts) => console.log(contacts.toString()));
     }
 catch (e) {
     console.log("Regex pattern is not valid" + e);
