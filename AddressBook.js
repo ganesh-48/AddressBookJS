@@ -41,12 +41,12 @@ class Contacts {
      * And it should be minimum 3 charaters.
      * If it is not start with capatil letter or it is not less than 3 letters then it is invalid.*/
     get firstName() {
-        return this.firstName;
+        return this._firstName;
     }
     set firstName(firstName) {
         let nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
         if (nameRegex.test(firstName)) {
-            this.firstName = firstName;
+            this._firstName = firstName;
         } else {
             throw "Invalid first name";
         }
@@ -56,12 +56,12 @@ class Contacts {
      * And it should be minimum 3 charaters.
      * If it is not start with capatil letter or it is not less than 3 letters then it is invalid.*/
     get lastName() {
-        this.lastName;
+        this._lastName;
     }
     set lastName(lastName) {
         let nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
         if (nameRegex.test(lastName)) {
-            this.lastName = lastName;
+            this._lastName = lastName;
         } else {
             throw "Invalid last name";
         }
@@ -70,12 +70,12 @@ class Contacts {
     /** Check the address is minimum 4 characters.
      * if is less than then print it is invalid.*/
     get address() {
-        this.address;
+        this._address;
     }
     set address(address) {
         let nameRegex = RegExp("^[A-Za-z0-9]{4,}");
         if (nameRegex.test(address)) {
-            this.address = address;
+            this._address = address;
         } else {
             throw " Address is Invalid ";
         }
@@ -84,12 +84,12 @@ class Contacts {
     /**check the city name is less 4 letters.
      * In that any numeric value then it is invalid city name. */
     get city() {
-        this.city;
+        this._city;
     }
     set city(city) {
         let nameRegex = RegExp("^[A-Za-z]{4,}$");
         if (nameRegex.test(city)) {
-            this.city = city;
+            this._city = city;
         } else {
             throw "City name is invalid";
         }
@@ -98,12 +98,12 @@ class Contacts {
     /**check the state name is less 2 letters.
      * In that any numeric value then it is invalid state name. */
     get state() {
-        this.state;
+        this._state;
     }
     set state(state) {
         let nameRegex = RegExp("^[A-Za-z]{2,}$");
         if (nameRegex.test(state)) {
-            this.state = state;
+            this._state = state;
         } else {
             throw "State name is invalid";
         }
@@ -112,12 +112,12 @@ class Contacts {
     /**zip code is in numbers.
      * if it is less than 6 numbers then it is invalid.*/
     get zip() {
-        this.zip;
+        this._zip;
     }
     set zip(zip) {
         let nameRegex = RegExp("^[1-9]{3}[ ]?[0-9]{3}$");
         if (nameRegex.test(zip)) {
-            this.zip = zip;
+            this._zip = zip;
         } else {
             throw "zip code is invalid";
         }
@@ -126,12 +126,12 @@ class Contacts {
     /**check phone number is 10 digit number .
      * if not then print a invalid phone number.*/
     get phoneNumber() {
-        this.phoneNumber;
+        this._phoneNumber;
     }
     set phoneNumber(phoneNumber) {
         let nameRegex = RegExp("^((\\\\+)?(\\\\d{2}[-]))?(\\\\d{10}){1}?$");
         if (nameRegex.test(phoneNumber)) {
-            this.phoneNumber = phoneNumber;
+            this._phoneNumber = phoneNumber;
         } else {
             throw "phone number is invalid";
         }
@@ -139,12 +139,12 @@ class Contacts {
 
     /**check a email. */
     get email() {
-        this.email;
+        this._email;
     }
     set email(email) {
         let nameRegex = RegExp("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
         if (nameRegex.test(email)) {
-            this.email = email;
+            this._email = email;
         } else {
             throw "Email id is invalid";
         }
@@ -188,9 +188,16 @@ try {
             else 
             console.log( searchPersonByCity + "Person name is found in a particular city" + searchPersonByCity);
         }
-        let searchPerzonByCity = "Solapur";
-        let searchPersonByCity = addContactsArray.filter(contacts => contacts.city == searchPersonByCity).map(contacts => contacts);
+        let searchPersonByCity = "Solapur";
+        let searchPersonByCity = addContactsArray.filter(contacts => contacts.city == searchPersonByCity).map(contacts => contacts).reduce(countPersonByCity, 0);
         searchPersonByCity();
+
+        // search  state by  name which is persent in  contact
+        function countPersonByCity(countPersonByState, contact) {
+            if (contact != null)
+                countPersonByState++;
+            return countPersonByState;
+        }
 
         //search person by state
         function searchPersonByState() {
@@ -199,7 +206,7 @@ try {
             else console.log( serchPersonByState + "Person name is found in address book" + searchPersonByState);
         }
         let searchPersonByState = "Maharashtra";
-        let serchPersonByState = addContactsArray.filter(contacts => contacts.state == searchPersonByState).map(contacts => contacts);
+        let serchPersonByState = addContactsArray.filter(contacts => contacts.state == searchPersonByState).map(contacts => contacts).reduce(countPersonByCity, 0);
         searchPersonByState();
  
         //search person city or state
@@ -209,6 +216,18 @@ try {
         contactsByCityArray.forEach(contacts => console.log(contacts.toString()))
         let contactsByStateArray = addContactsArray.filter(contacts => contacts.state == contactsViewPersonByState).map(contacts => contacts);
         contactsByStateArray.forEach(contacts => console.log(contacts.toString()));
+
+        //Number of contact count by city or state. 
+        function countContactsPerson(counter, contacts) {
+            if (contacts !== null)
+                counter++;
+            return counter;
+        }
+        let countPeraonByCity = addContactsArray.filter(contacts => contacts.city !== null).map(contacts => contacts).reduce(countContactsPerson, 0);
+        console.log("Count by City " + countPersonByCity);
+        let countPersonByState = addContactsArray.filter(contacts => contacts.state !== null).map(contacts => contacts).reduce(countContactsPerson, 0);
+        console.log("Count by City " + countPersonByState);
+    
     }
 catch (e) {
     console.log("Regex pattern is not valid" + e);
