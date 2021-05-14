@@ -227,7 +227,15 @@ try {
         console.log("Count by City " + countPersonByCity);
         let countPersonByState = addContactsArray.filter(contacts => contacts.state !== null).map(contacts => contacts).reduce(countContactsPerson, 0);
         console.log("Count by City " + countPersonByState);
-    
+ 
+        function sortByPersonsName() {
+            for (let details in addContactsArray) {
+                addContactsArray.sort(details.firstName);
+            }
+            addContactsArray.forEach(contacts => console.log(contacts.toString()));
+        }
+        console.log("Sort by firstName");
+        sortByFirstName();
     }
 catch (e) {
     console.log("Regex pattern is not valid" + e);
