@@ -11,6 +11,7 @@
 * Search the duplicate contacts.
 * Search person by city and state.
 * used filter to find person name in city or state.
+* View a person name by city or state
 */
 console.log(" Welcome to Address Book Problem ");
 
@@ -162,6 +163,7 @@ class Contacts {
  * Search the duplicate contacts.
  * Search person by city and state.
  * used filter to find person name in city or state.
+ * View a person name by city or state
  */
 try {
     let addContactsArray = new Array();
@@ -199,7 +201,14 @@ try {
         let searchPersonByState = "Maharashtra";
         let serchPersonByState = addContactsArray.filter(contacts => contacts.state == searchPersonByState).map(contacts => contacts);
         searchPersonByState();
-    
+ 
+        //search person city or state
+        let contactsViewPersonByCity = "Pune";
+        let contactsViewPersonByState = "Maharashtra";
+        let contactsByCityArray = addContactsArray.filter(contacts => contacts.city == contactsViewPersonByCity).map(contacts => contacts);
+        contactsByCityArray.forEach(contacts => console.log(contacts.toString()))
+        let contactsByStateArray = addContactsArray.filter(contacts => contacts.state == contactsViewPersonByState).map(contacts => contacts);
+        contactsByStateArray.forEach(contacts => console.log(contacts.toString()));
     }
 catch (e) {
     console.log("Regex pattern is not valid" + e);
